@@ -1,6 +1,7 @@
 import React from 'react';
 import Guess from '../Guess/Guess';
 import { range } from '../../utils';
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 
 function GuessResults({ guesses }) {
 
@@ -12,17 +13,16 @@ console.log("guess count = "+ guessCount);
     <div className="guess-results">
 
 {
-range(guessCount).map((num) => (
-        <Guess thisGuess={guesses[num]}/>
-      ))
-      }
+range(NUM_OF_GUESSES_ALLOWED).map((num) => (
 
-      {
-      //guesses.map(({ id, label }) => (
-      //  <Guess label={label}/>
-      //)
-      //)
-    }
+
+<Guess key={num} guessNum={num}
+answers={guesses}
+/>)
+)
+
+}
+
 
     </div>
   );
