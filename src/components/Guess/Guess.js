@@ -1,11 +1,19 @@
 import React from 'react';
 import { range } from '../../utils';
-function Guess({guessNum,answers}) {
+import { checkGuess } from '../../game-helpers';
+
+function Guess({guessNum,allGuesses,answer}) {
  
   let guessArray=[];
-let isAGuess = !!answers[guessNum];
+  let guessResult=[];
+let isAGuess = !!allGuesses[guessNum];
 if (isAGuess){
-guessArray = answers[guessNum]['label'].split('');
+guessArray = allGuesses[guessNum]['label'].split('');
+guessResult = checkGuess(allGuesses[guessNum]['label'], answer);
+console.log("checkGuess=");
+console.log(guessResult);
+console.log("answer=" + answer);
+
 }
 
 
@@ -18,7 +26,7 @@ guessArray = answers[guessNum]['label'].split('');
   return (
     <p className="guess" key={guessNum}>
       {range(5).map((num) => (
-        <span className="cell" key={num}>{ isAGuess && guessArray[num]
+        <span className={isAGuess ? `cell ${guessResult[num]['status']}` :"cell" } key={num}>{ isAGuess && guessArray[num]
         }</span>
       ))}
     </p>
