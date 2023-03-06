@@ -7,8 +7,6 @@ function GuessResults({ guesses,answer }) {
 
 let guessCount = guesses.length;
 
-console.log("guess count = "+ guessCount);
-
   return (
     <div className="guess-results">
 

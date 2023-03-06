@@ -2,7 +2,6 @@ import React from 'react';
 
 function GuessInput({ handleGuess }) {
   const [label, setLabel] = React.useState('');
-  console.log('here');
   return (
     <form
       className="guess-input-wrapper"
